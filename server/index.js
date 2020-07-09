@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
@@ -69,6 +70,8 @@ const createApp = () => {
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use('./uploads', express.static('uploads'))
+  app.use('/exported-images', express.static('static'))
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
