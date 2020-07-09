@@ -47,50 +47,6 @@ class Three extends Component {
     //plane
     const geometry = new THREE.PlaneGeometry(0.256, 0.256, 16, 16)
 
-    //custom
-
-    // const geometry = new THREE.Geometry()
-    // geometry.vertices.push(
-    //   new THREE.Vector3(5, 0, 5),
-    //   new THREE.Vector3(0, 5, 5),
-    //   new THREE.Vector3(5, 5, -5),
-    //   new THREE.Vector3(5, 0, 3),
-    //   new THREE.Vector3(0, 5, 3)
-    // )
-
-    // geometry.faces.push(
-    //   // top
-    //   new THREE.Face3(0, 1, 2),
-    //   // left
-    //   new THREE.Face3(0, 2, 3),
-    //   // right
-    //   new THREE.Face3(1, 2, 4)
-    // )
-
-    // box
-    //const geometry = new THREE.BoxGeometry()
-
-    //coneBuffer
-    // const radius = 4.2
-    // const height = 9.9
-    // const radialSegments = 7
-    // const heightSegments = 1
-    // const openEnded = false
-    // const thetaStart = Math.PI * 1.94
-    // const thetaLength = Math.PI * 1.0
-
-    // const geometry = new THREE.ConeBufferGeometry(
-    //   radius,
-    //   height,
-    //   radialSegments,
-    //   heightSegments,
-    //   openEnded,
-    //   thetaStart,
-    //   thetaLength
-    // )
-
-    //
-
     const material = new THREE.ShaderMaterial({
       uniforms: {
         uTime: {value: 0.0},
@@ -109,8 +65,6 @@ class Three extends Component {
     camera.position.z = 0.3
     const animate = function() {
       requestAnimationFrame(animate)
-      // cone.rotation.x += 0.01
-      // cone.rotation.y += 0.01
       //mesh.rotation.z = Math.PI
       material.uniforms.uTime.value = clock.getElapsedTime()
       renderer.render(scene, camera)
