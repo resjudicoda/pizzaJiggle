@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Buttons = props => (
+const Button = props => (
   <div className="buttons fadein">
     <div className="button">
       <label htmlFor="single" />
@@ -9,4 +9,4 @@ const Buttons = props => (
   </div>
 )
 
-export default Buttons
+export default Button

@@ -1,18 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component, useState} from 'react'
 import Images from './Images'
-import Buttons from './Buttons'
+import Button from './Button'
 import Spinner from './Spinner'
 
-class Uploader extends Component {
-  state = {
-    uploading: false,
-    images: []
-  }
+const Uploader = props => {
+  const [uploading, setUploading] = useState(false)
+  const [images, setImages] = useState([])
 
-  onChange = e => {
+  const onChange = e => {
     const file = e.target.files[0]
     console.log('file', file)
-    this.setState({uploading: true})
+    setUploading(true)
 
     const formData = new FormData()
     formData.append('image', file)
@@ -23,34 +21,27 @@ class Uploader extends Component {
     })
       .then(res => res.json())
       .then(images => {
-        console.log('returned images', images)
-        this.setState({
-          uploading: false,
-          images
-        })
+        setImages(images)
+        setUploading(false)
       })
   }
 
-  render() {
-    const {uploading, images} = this.state
-
-    const content = () => {
-      switch (true) {
-        case uploading:
-          return <Spinner />
-        case images.length > 0:
-          return <Images images={images} />
-        default:
-          return <Buttons onChange={this.onChange} />
-      }
+  const content = () => {
+    switch (true) {
+      case uploading:
+        return <Spinner />
+      case images && images.length > 0:
+        return <Images images={images} />
+      default:
+        return <Button onChange={onChange} />
     }
-
-    return (
-      <div>
-        <div className="buttons">{content()}</div>
-      </div>
-    )
   }
+
+  return (
+    <>
+      <div className="display">{content()}</div>
+    </>
+  )
 }
 
 export default Uploader
