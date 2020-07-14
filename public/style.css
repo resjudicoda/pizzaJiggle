@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  /* background-color: #de9844; */
+  background: linear-gradient(#744f19 10%, #e6ac65 11%);
 }
 
 a {
@@ -31,16 +33,18 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1vw 0 0 0;
+  padding: 1.1rem 0 0 0;
+  border-radius: 10px;
+  width: 50%;
+  background-color: #8d1b07;
 }
 
 .button {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
-  max-width: 30vw;
 }
 
 .display {
@@ -48,13 +52,22 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* background-color: #e6ac65; */
 }
 
 .buttonLabel:hover {
-  background-color: purple;
+  background-color: #a63110;
 }
 
 .buttonLabel:active {
   background-color: yellow;
+}
+
+/* .crust {
+  background-color: #744f19;
+} */
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
 }

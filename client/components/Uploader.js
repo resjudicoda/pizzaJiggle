@@ -2,10 +2,12 @@ import React, {Component, useState} from 'react'
 import Images from './Images'
 import Button from './Button'
 import Spinner from './Spinner'
+import UseWindowDimensions from '../util/UseWindowDimensions'
 
 const Uploader = props => {
   const [uploading, setUploading] = useState(false)
   const [images, setImages] = useState([])
+  const {height, width} = UseWindowDimensions()
 
   const onChange = e => {
     const file = e.target.files[0]
@@ -39,7 +41,10 @@ const Uploader = props => {
 
   return (
     <>
-      <div className="display">{content()}</div>
+      <div className="crust" style={{width: width, height: height * 0.1}} />
+      <div className="display" style={{width: width, height: height * 0.9}}>
+        {content()}
+      </div>
     </>
   )
 }
